@@ -4,7 +4,7 @@ import Input from "@/app/components/inputs/page";
 import { useCallback, useState } from "react";
 import { SubmitHandler, FieldValues, useForm } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
-import { BsGithub } from "react-icons/bs";
+import { BsGithub, BsGoogle } from "react-icons/bs";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -86,12 +86,27 @@ const AuthForm = () => {
               </span>
             </div>
           </div>
-
+          {/* FORM BOTTOM ICONS */}
           <div className="mt-6 flex gap-2">
             <AuthSocialButton
               icon={BsGithub}
               onClick={() => socialAction("github")}
             />
+            <AuthSocialButton
+              icon={BsGoogle}
+              onClick={() => socialAction("google")}
+            />
+          </div>
+
+          <div className="flex gap-2 justify-center text-sm py-2 text-gray-500">
+            <div>
+              {variant === "LOGIN"
+                ? "Naw to Messenger?"
+                : "Already have an Account?"}
+            </div>
+            <div onClick={toggleVariant} className="underline cursor-pointer">
+              {variant === "LOGIN" ? "Create an account" : "Login"}
+            </div>
           </div>
         </div>
       </div>
