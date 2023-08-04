@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import TosterContext from "./context/TosterContext";
+import AuthContext from "./context/AuthContext";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TosterContext />
-        {children}
+        <AuthContext>
+          <TosterContext />
+          {children}
+        </AuthContext>
       </body>
     </html>
   );
